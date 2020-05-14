@@ -1,19 +1,21 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <ul>
+    <li v-for="user in users" :key="user.id">{{ user.id }}： {{ user.name }}</li>
+  </ul>
 </template>
-
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
+<script>
+import axios from "axios";
+export default {
+  name: "app",
+  data() {
+    return {
+      users: []
+    };
+  },
+  mounted() {
+    axios.get("http://localhost:3000/api/users").then(res => {
+      this.users = res.data;
+    });
+  }
+};
+</script>

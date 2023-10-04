@@ -17,6 +17,7 @@ export default {
     }
   },
   async mounted(){
+    console.log('222222')
     const { data } = await axios.get('/api/users')
     this.users = data;
   }

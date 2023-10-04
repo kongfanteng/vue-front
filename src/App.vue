@@ -17,7 +17,7 @@ export default {
     }
   },
   async mounted(){
-    const { data } = await axios.get('http://localhost:3000/api/users')
+    const { data } = await axios.get('/api/users')
     this.users = data;
   }
 }
